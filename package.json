@@ -1,0 +1,11 @@
+{
+  "name": "sequelize-auto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sadithap/sequelize-auto.git",
+  "author": "I Gede Ketut Saditha Putra <sadithaputra5@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
