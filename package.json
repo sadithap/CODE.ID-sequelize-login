@@ -2,20 +2,22 @@
   "name": "sequelize-auto",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/sadithap/sequelize-auto.git",
+  "repository": "https://github.com/sadithap/CODE.ID-sequelize-login.git",
   "author": "I Gede Ketut Saditha Putra <sadithaputra5@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "nodemon --exec babel-node ./server/index.js",
-    "db":"sequelize-auto -o ./schema -d HR -h localhost -u postgres -p 5432 -x admin -e postgres -l esm"
+    "db": "sequelize-auto -o ./schema -d HR -h localhost -u postgres -p 5432 -x admin -e postgres -l esm"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
     "pg": "^8.11.0",
     "sequelize": "^6.32.0"
   },

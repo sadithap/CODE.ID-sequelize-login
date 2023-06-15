@@ -28,6 +28,7 @@ app.use('/department',routes.departmentRoute)
 app.use('/location',routes.locationRoute)
 app.use('/job',routes.jobRoute)
 app.use('/job_history',routes.jobHistoryRoute)
+app.use('/auth',routes.userRoute)
 
 const dropDatabaseSync = false
 

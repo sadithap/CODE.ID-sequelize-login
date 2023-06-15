@@ -3,7 +3,7 @@ import indexCtrl from "../controller/indexCtrl";
 
 const router = Router()
 
-router.get('/',indexCtrl.regionCtrl.findAll)
+router.get('/',indexCtrl.userCtrl.verify,indexCtrl.regionCtrl.findAll)
 router.get('/:ids',indexCtrl.regionCtrl.findOne)
 router.post('/',indexCtrl.regionCtrl.create)
 router.put('/:id',indexCtrl.regionCtrl.update)

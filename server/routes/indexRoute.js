@@ -5,6 +5,7 @@ import departmentRoute from './departmentRoute'
 import locationRoute from './locationRoute'
 import jobRoute from './jobRoute'
 import jobHistoryRoute from './jobHistoryRoute'
+import userRoute from './userRoute'
 
 export default {
     regionRoute,
@@ -13,5 +14,6 @@ export default {
     departmentRoute,
     locationRoute,
     jobRoute,
-    jobHistoryRoute
+    jobHistoryRoute,
+    userRoute
 }

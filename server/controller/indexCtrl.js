@@ -5,6 +5,7 @@ import departmentCtrl from "./departmentCtrl";
 import locationCtrl from "./locationCtrl";
 import jobCtrl from "./jobCtrl";
 import jobHistoryCtrl from "./jobHistoryCtrl";
+import userCtrl from "./userCtrl";
 
 export default {
     regionCtrl,
@@ -13,5 +14,6 @@ export default {
     departmentCtrl,
     locationCtrl,
     jobCtrl,
-    jobHistoryCtrl
+    jobHistoryCtrl,
+    userCtrl
 }
