@@ -3,7 +3,6 @@ import indexCtrl from "../controller/indexCtrl";
 
 const router = Router()
 
-router.get('/',indexCtrl.customerCtrl.findOne)
-router.get('/order',indexCtrl.customerCtrl.yourOrder)
+router.post('/add',indexCtrl.orderCtrl.addOrder)
 
 export default router

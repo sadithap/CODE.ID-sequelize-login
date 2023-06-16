@@ -31,6 +31,21 @@ const create = async (req, res) => {
   }
 };
 
+const findByCategory = async (req,res) => {
+    try {
+        const product = await req.context.models.product_category.findAll({
+            include: [{
+                model: req.context.models.product,
+                as: "product"
+            }],
+            include: {all:true}
+        })
+        return res.send(product);
+    } catch (error) {
+        return res.send(error);
+    }
+};
+
 // const update = async (req, res) => {
 //   try {
 //     const rows = await req.context.models.countries.update(
@@ -69,5 +84,6 @@ const create = async (req, res) => {
 // }
 export default {
   findAll,
-  create
+  create,
+  findByCategory
 };

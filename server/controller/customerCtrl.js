@@ -18,6 +18,30 @@ const findOne = async (req, res) => {
   }
 };
 
+const yourOrder = async (req,res) => {
+  try {
+      await sequelize.query('select b.firstname,b.lastname,c.totalprice,c.totalproduct,e.name from users a join customers b on a.id=b.user_id join orders c on a.id=c.user_id join order_detail d on c.order_id=d.order_id join product e on e.product_id=d.product_id where a.username = :username',
+      {replacements : {username : req.body.username},type : sequelize.QueryTypes.SELECT}
+      ).then(result => {
+          return res.send(result)
+      })
+      // const user = await req.context.models.users.findAll({
+      //   where : {username: req.body.username},
+      //   attributes: ["username"],
+      //   include: [{
+      //     model: req.context.models.customers,
+      //     as: "customers",
+      //     required: true,
+      //     attributes: ["firstname","lastname"],
+      //   }
+      // ]
+      // });
+      // return res.send(user);
+  } catch (error) {
+      return res.send(error);
+  }
+}
+
 // const findAll = async (req, res) => {
 //   try {
 //     const rows = await req.context.models.countries.findAll();
@@ -74,5 +98,6 @@ const findOne = async (req, res) => {
 //     }
 // }
 export default {
-  findOne
+  findOne,
+  yourOrder
 };
