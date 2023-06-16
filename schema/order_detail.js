@@ -1,29 +1,33 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class orders extends Model {
+export default class order_detail extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    order_id: {
+    detail_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    user_id: {
+    order_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'users',
-        key: 'id'
+        model: 'orders',
+        key: 'order_id'
       }
     },
-    totalproduct: {
+    product_id: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'product',
+        key: 'product_id'
+      }
     },
-    totalprice: {
-      type: DataTypes.DECIMAL,
+    quantity: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     createdat: {
@@ -38,15 +42,15 @@ export default class orders extends Model {
     }
   }, {
     sequelize,
-    tableName: 'orders',
+    tableName: 'order_detail',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "order_pk",
+        name: "detail_pk",
         unique: true,
         fields: [
-          { name: "order_id" },
+          { name: "detail_id" },
         ]
       },
     ]

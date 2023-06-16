@@ -4,34 +4,49 @@ const { Model, Sequelize } = _sequelize;
 export default class customers extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    cust_id: {
-      type: DataTypes.CHAR(8),
+    customer_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    cust_name: {
-      type: DataTypes.STRING(40),
+    firstname: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    cust_city: {
-      type: DataTypes.STRING(15),
+    lastname: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    cust_location_id: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.fn('now')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.fn('now')
     }
   }, {
     sequelize,
     tableName: 'customers',
-    schema: 'sales',
+    schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "cust_id_pk",
+        name: "cus_id_pk",
         unique: true,
         fields: [
-          { name: "cust_id" },
+          { name: "customer_id" },
         ]
       },
     ]

@@ -4,27 +4,29 @@ const { Model, Sequelize } = _sequelize;
 export default class users extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    user_id: {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     username: {
-      type: DataTypes.STRING(25),
-      allowNull: true
-    },
-    email: {
-      type: DataTypes.STRING(50),
-      allowNull: true
-    },
-    phone: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     password: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.TEXT,
       allowNull: true
+    },
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.fn('now')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.fn('now')
     }
   }, {
     sequelize,
@@ -33,10 +35,10 @@ export default class users extends Model {
     timestamps: false,
     indexes: [
       {
-        name: "user_pk",
+        name: "id_pk",
         unique: true,
         fields: [
-          { name: "user_id" },
+          { name: "id" },
         ]
       },
     ]

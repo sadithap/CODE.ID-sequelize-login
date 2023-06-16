@@ -1,46 +1,44 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class departments extends Model {
+export default class product_category extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    department_id: {
+    category_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    department_name: {
-      type: DataTypes.STRING(30),
+    name: {
+      type: DataTypes.STRING(10),
       allowNull: true
     },
-    manager_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'employees',
-        key: 'employee_id'
-      }
+    description: {
+      type: DataTypes.STRING(200),
+      allowNull: true
     },
-    location_id: {
-      type: DataTypes.INTEGER,
+    createdat: {
+      type: DataTypes.DATE,
       allowNull: true,
-      references: {
-        model: 'locations',
-        key: 'location_id'
-      }
+      defaultValue: Sequelize.Sequelize.fn('now')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.fn('now')
     }
   }, {
     sequelize,
-    tableName: 'departments',
+    tableName: 'product_category',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "departments_pkey",
+        name: "category_pk",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "category_id" },
         ]
       },
     ]
