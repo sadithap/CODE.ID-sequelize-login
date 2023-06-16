@@ -67,6 +67,7 @@ const userLogin = async (req, res) => {
     }
   };
 
+  
   const verify = async (req,res,next) => {
     const bearer = req.headers.authorization;
     const token = bearer.split(" ");
